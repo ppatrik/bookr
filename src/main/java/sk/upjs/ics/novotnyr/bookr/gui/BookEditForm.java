@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Calendar;
 import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ComboBoxModel;
@@ -108,7 +109,7 @@ public class BookEditForm extends JDialog {
         add(lblYear);
         
         add(txtYear, "span 2");
-        txtYear.setText(Integer.toString(book.getYear()));
+        txtYear.setText(parseYear(book.getYear()));
         
         
         /* -- Book Cover - */
@@ -211,6 +212,14 @@ public class BookEditForm extends JDialog {
 
     private void refreshCmbPublisherModel() {
         cmbPublisher.setModel(getPublisherComboBoxModel());
+    }
+
+    private String parseYear(int year) {
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        if(year <= 0) {
+            year = currentYear;
+        } 
+        return Integer.toString(year);
     }
 
     
