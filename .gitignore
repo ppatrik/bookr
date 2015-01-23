@@ -39,6 +39,7 @@ Thumbs.db
 .idea*
 bookr.iml
 nbactions.xml
+db/*
 
 # Binary Target #
 #################
