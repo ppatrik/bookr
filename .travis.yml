@@ -4,4 +4,4 @@ jdk:
   - oraclejdk7
   - openjdk7
 before_script:
-  - mvn -Pdb exec:java
+  - mvn -Pdb exec:java &
