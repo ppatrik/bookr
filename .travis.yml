@@ -5,4 +5,5 @@ jdk:
   - openjdk7
 before_script:
   - mvn -Pdb exec:java &
+  - sleep 30s
   - mvn flyway:migrate
