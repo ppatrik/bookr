@@ -15,7 +15,8 @@ public class HsqlBookDaoTest {
     @Test
     public void testList() {
         List<Book> books = bookDao.list();
-        assertEquals(0, books.size());
+        List<Book> books1 = bookDao.list();
+        assertEquals(books1.size(), books.size());
     }
 
     @Test

@@ -63,6 +63,7 @@ public class Book {
     }
 
     public void setRating(int rating) {
+        // nastavuje ho BookRowMapper!
         this.rating = rating;
     }
 
