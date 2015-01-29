@@ -1,12 +1,14 @@
 
 package sk.upjs.ics.novotnyr.bookr;
 
-import javax.swing.ImageIcon;
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+import javax.swing.*;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 
 /**
- *
  * @author rn
  */
 public class HsqlImageCoverServiceTest {
@@ -18,10 +20,10 @@ public class HsqlImageCoverServiceTest {
     public void testGetImageCover() {
         Book book = new Book();
         book.setId(5L);
-        
+
         ImageCoverService imageCoverService = BeanFactory.INSTANCE.imageCoverService();
         ImageIcon icon = imageCoverService.getImageCover(book);
-        
+
         assertNotNull(icon);
     }
 

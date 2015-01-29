@@ -1,13 +1,16 @@
 
 package sk.upjs.ics.novotnyr.bookr;
 
-import java.util.List;
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class HsqlBookDaoTest {
     private BookDao bookDao = BeanFactory.INSTANCE.bookDao();
-    
+
 
     @Test
     public void testList() {

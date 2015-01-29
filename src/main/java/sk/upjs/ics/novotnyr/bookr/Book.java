@@ -4,13 +4,13 @@ import java.io.File;
 
 public class Book {
     private Long id;
-    
+
     private String title;
-    
+
     private File path;
-    
+
     private Publisher publisher;
-    
+
     private int year;
 
     public Long getId() {
@@ -52,6 +52,6 @@ public class Book {
     public void setYear(int year) {
         this.year = year;
     }
-    
-    
+
+
 }
