@@ -74,7 +74,7 @@ public class BookDashboardForm extends JFrame {
         refreshBookData();
 
         panBookDetail = new BookDetailPanel();
-        add(panBookDetail);
+        add(panBookDetail.getPanel());
 
         initMenu();
 

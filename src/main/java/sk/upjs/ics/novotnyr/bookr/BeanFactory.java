@@ -13,6 +13,8 @@ public enum BeanFactory {
 
     private PublisherDao publisherDao;
 
+    private CommentDao commentDao;
+
     private JdbcTemplate jdbcTemplate;
 
     private ImageCoverService imageCoverService;
@@ -36,6 +38,13 @@ public enum BeanFactory {
             this.publisherDao = new HsqlPublisherDao(jdbcTemplate());
         }
         return this.publisherDao;
+    }
+
+    public CommentDao commentDao() {
+        if (this.commentDao == null) {
+            this.commentDao = new HsqlCommentDao(jdbcTemplate());
+        }
+        return this.commentDao;
     }
 
     public ImageCoverService imageCoverService() {

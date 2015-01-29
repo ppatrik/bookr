@@ -3,6 +3,8 @@ package sk.upjs.ics.novotnyr.bookr;
 import java.io.File;
 
 public class Book {
+    private CommentDao commentDao = BeanFactory.INSTANCE.commentDao();
+
     private Long id;
 
     private String title;
@@ -12,6 +14,8 @@ public class Book {
     private Publisher publisher;
 
     private int year;
+
+    private int rating;
 
     public Long getId() {
         return id;
@@ -53,5 +57,12 @@ public class Book {
         this.year = year;
     }
 
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
 
 }

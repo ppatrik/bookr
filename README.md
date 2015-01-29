@@ -5,7 +5,7 @@
 mvn -Pdb exec:java
 ```
 
-**Insert sample data (one-time)**
+**Insert sample data (one-time) !migrate before continue**
 ```
 mvn flyway:migrate
 ```
