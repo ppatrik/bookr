@@ -7,4 +7,3 @@ before_script:
   - mvn -Pdb exec:java &
   - sleep 30s
   - mvn flyway:migrate
-  - mvn flyway:migrate
