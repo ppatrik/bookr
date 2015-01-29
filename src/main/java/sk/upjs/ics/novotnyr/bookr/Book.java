@@ -1,6 +1,7 @@
 package sk.upjs.ics.novotnyr.bookr;
 
 import java.io.File;
+import java.util.List;
 
 public class Book {
     private CommentDao commentDao = BeanFactory.INSTANCE.commentDao();
@@ -63,6 +64,10 @@ public class Book {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public List<Comment> getComments() {
+        return commentDao.list(this);
     }
 
 }

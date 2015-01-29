@@ -19,14 +19,8 @@ public class PublisherEditForm extends JDialog {
     private JLabel lblName = new JLabel("Name:");
 
     private JTextField txtName = new JTextField();
-    ;
-
     private JLabel lblWeb = new JLabel("Website:");
-    ;
-
     private JTextField txtWeb = new JTextField();
-    ;
-
     private JButton btnOk = new JButton("OK");
 
     private JButton btnCancel = new JButton("Cancel");
@@ -59,9 +53,8 @@ public class PublisherEditForm extends JDialog {
             }
         });
 
-        setLocationByPlatform(true);
-        setLocationRelativeTo(null);
         pack();
+        setLocationRelativeTo(null);
     }
 
     private void btnOkActionPerformed(ActionEvent event) {

@@ -1,6 +1,5 @@
 package sk.upjs.ics.novotnyr.bookr.gui;
 
-import com.jgoodies.looks.windows.WindowsLookAndFeel;
 import net.miginfocom.swing.MigLayout;
 import sk.upjs.ics.novotnyr.bookr.*;
 
@@ -16,32 +15,23 @@ import java.util.List;
 
 
 public class BookDashboardForm extends JFrame {
+    private final BookDetailPanel panBookDetail;
     private BookDao bookDao = BeanFactory.INSTANCE.bookDao();
-
     private PublisherDao publisherDao = BeanFactory.INSTANCE.publisherDao();
-
     private BookDashboardListCellRenderer bookDashboardListCellRenderer = new BookDashboardListCellRenderer();
-
     private JButton btnSearch = new JButton("Search");
     private JList lstBooks = new JList();
-
     private JScrollPane scrollPaneLstBooks = new JScrollPane(lstBooks);
-
     private JMenuBar menuBar = new JMenuBar();
     private JMenuItem menuBookAdd = new JMenuItem("Add...");
     private JMenu menuBooks = new JMenu("Books...");
-    ;
     private JMenuItem menuPublisherAdd = new JMenuItem("Add...");
-    ;
     private JMenuItem menuPublishersList = new JMenuItem("Show All...");
-    ;
     private JMenu mnuPublishers = new JMenu();
     private JTextField txtSearchQuery = new JTextField();
-
     private JLabel lblCmbPublisher = new JLabel("Publisher: ");
     private JComboBox cmbPublisher = new JComboBox();
     private ListCellRenderer publisherListCellRenderer = new PublisherListCellRenderer();
-
     private JPanel panSearch = createSearchPanel();
 
     public BookDashboardForm() {
@@ -85,8 +75,6 @@ public class BookDashboardForm extends JFrame {
         pack();
     }
 
-    private final BookDetailPanel panBookDetail;
-
     private JPanel createSearchPanel() {
         JPanel searchPanel = new JPanel(new MigLayout("insets 0", "[fill, grow][][][]"));
         searchPanel.add(txtSearchQuery);
@@ -119,7 +107,7 @@ public class BookDashboardForm extends JFrame {
         return searchPanel;
     }
 
-    private void refreshBookData() {
+    public void refreshBookData() {
         lstBooks.setListData(bookDao.list().toArray());
     }
 
@@ -218,6 +206,12 @@ public class BookDashboardForm extends JFrame {
                 popupLstBooksEditActionPerformed(e);
             }
         });
+        popupMenu.add(new AbstractAction("Comments") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                popupLstBooksCommentActionPerformed(e);
+            }
+        });
         return popupMenu;
     }
 
@@ -239,6 +233,13 @@ public class BookDashboardForm extends JFrame {
         lstBooksMouseDoubleClicked(DialogUtils.NO_MOUSE_EVENT);
     }
 
+    private void popupLstBooksCommentActionPerformed(ActionEvent e) {
+        Book selectedBook = (Book) lstBooks.getSelectedValue();
+        if (selectedBook != null) {
+            new BookDetailForm(selectedBook);
+        }
+        refreshBookData();
+    }
 
     private void cmbPublisherActionPerformed(ActionEvent e) {
         Publisher publisher = (Publisher) cmbPublisher.getSelectedItem();
@@ -247,20 +248,6 @@ public class BookDashboardForm extends JFrame {
         } else {
             lstBooks.setListData(bookDao.findByPublisher(publisher).toArray());
         }
-    }
-
-    public static void main(String args[]) throws UnsupportedLookAndFeelException {
-        if (SystemUtilities.isRunningOnWindows()) {
-            UIManager.setLookAndFeel(new WindowsLookAndFeel());
-        }
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                BookDashboardForm bookDashboardForm = new BookDashboardForm();
-                bookDashboardForm.setLocationRelativeTo(null);
-                bookDashboardForm.setVisible(true);
-            }
-        });
     }
 
     private Book getPrototypeBookValue() {

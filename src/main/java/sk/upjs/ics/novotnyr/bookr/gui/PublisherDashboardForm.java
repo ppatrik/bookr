@@ -66,10 +66,20 @@ public class PublisherDashboardForm extends JDialog {
             }
         });
 
+        pack();
+
         setPreferredSize(new Dimension(640, 480));
         setLocationRelativeTo(null);
 
-        pack();
+    }
+
+    public static void main(String[] args) throws UnsupportedLookAndFeelException {
+        UIManager.setLookAndFeel(new WindowsLookAndFeel());
+
+        PublisherDashboardForm publisherDashboardForm = new PublisherDashboardForm(null);
+        publisherDashboardForm.setDefaultCloseOperation(PublisherDashboardForm.DISPOSE_ON_CLOSE);
+        publisherDashboardForm.setVisible(true);
+
     }
 
     private TableRowSorter createTableRowSorter() {
@@ -89,7 +99,6 @@ public class PublisherDashboardForm extends JDialog {
         String query = txtSearchQuery.getText();
         this.publisherTableRowSorter.setRowFilter(RowFilter.regexFilter(query));
     }
-
 
     private void btnResetSearchActionPerformed(ActionEvent e) {
         this.publisherTableRowSorter.setRowFilter(RowFilter.regexFilter(""));
@@ -111,14 +120,5 @@ public class PublisherDashboardForm extends JDialog {
             }
         });
         return popupMenu;
-    }
-
-    public static void main(String[] args) throws UnsupportedLookAndFeelException {
-        UIManager.setLookAndFeel(new WindowsLookAndFeel());
-
-        PublisherDashboardForm publisherDashboardForm = new PublisherDashboardForm(null);
-        publisherDashboardForm.setDefaultCloseOperation(PublisherDashboardForm.DISPOSE_ON_CLOSE);
-        publisherDashboardForm.setVisible(true);
-
     }
 }

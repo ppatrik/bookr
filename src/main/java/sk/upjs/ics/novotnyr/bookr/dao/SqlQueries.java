@@ -41,7 +41,7 @@ public class SqlQueries {
             "\n" +
             "FROM book\n" +
             "JOIN publisher on publisher.id = book.publisher_id\n" +
-            "WHERE book.title LIKE '%' || ? || '%'";
+            "WHERE LOWER(book.title) LIKE LOWER('%' || ? || '%')";
 
     public static final String SELECT_BOOK_BY_PUBLISHER = "SELECT \n" +
             "   book.id as book_id,\n" +

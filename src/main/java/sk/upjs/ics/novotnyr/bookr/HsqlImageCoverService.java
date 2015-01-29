@@ -19,17 +19,12 @@ import java.util.List;
 import java.util.Map;
 
 public class HsqlImageCoverService implements ImageCoverService {
-    private static Logger logger = LoggerFactory.getLogger(HsqlImageCoverService.class);
-
-    private JdbcTemplate jdbcTemplate;
-
-    private Map<Long, ImageIcon> imageCoverCache = new LRUMap(20);
-
-    private BookCoverRowMapper bookCoverRowMapper = new BookCoverRowMapper();
-
     private static final int DEFAULT_THUMBNAIL_HEIGHT = 80;
-
     private static final int DEFAULT_THUMBNAIL_WIDTH = 50;
+    private static Logger logger = LoggerFactory.getLogger(HsqlImageCoverService.class);
+    private JdbcTemplate jdbcTemplate;
+    private Map<Long, ImageIcon> imageCoverCache = new LRUMap(20);
+    private BookCoverRowMapper bookCoverRowMapper = new BookCoverRowMapper();
 
     public HsqlImageCoverService() {
     }
@@ -41,7 +36,7 @@ public class HsqlImageCoverService implements ImageCoverService {
     @Override
     public ImageIcon getImageCover(Book book) {
         if (imageCoverCache.containsKey(book.getId())) {
-            logger.debug("Loading image cover for {} from cache", book.getId());
+            //logger.debug("Loading image cover for {} from cache", book.getId());
             return imageCoverCache.get(book.getId());
         }
 
