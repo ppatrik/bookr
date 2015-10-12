@@ -28,6 +28,8 @@ public class BookDashboardForm extends JFrame {
     private JMenuItem menuPublisherAdd = new JMenuItem("Add...");
     private JMenuItem menuPublishersList = new JMenuItem("Show All...");
     private JMenu mnuPublishers = new JMenu();
+    private JMenu menuHelp = new JMenu("Help");
+    private JMenuItem menuAbout = new JMenuItem("About...");
     private JTextField txtSearchQuery = new JTextField();
     private JLabel lblCmbPublisher = new JLabel("Publisher: ");
     private JComboBox cmbPublisher = new JComboBox();
@@ -142,7 +144,21 @@ public class BookDashboardForm extends JFrame {
         });
         mnuPublishers.add(menuPublishersList);
 
+        menuBar.add(menuHelp);
+        menuHelp.add(menuAbout);
+        menuAbout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                menuAboutActionPerformed(e);
+            }
+        });
+
         setJMenuBar(menuBar);
+    }
+
+    private void menuAboutActionPerformed(ActionEvent e) {
+        AboutForm aboutForm = new AboutForm(this);
+        aboutForm.setVisible(true);
     }
 
     private void menuPublisherAddActionPerformed(java.awt.event.ActionEvent evt) {
